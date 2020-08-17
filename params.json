@@ -1,0 +1,31 @@
+{
+  "initial_time": "2011-05-25T13:34:05Z",
+  "transfer_time": 7370.0,
+  "initial_orbit": {
+    "semimajor_axis": 6653.14,
+    "eccentricity": 0.0,
+    "inclination": 51.6,
+    "argument_of_perigee": 0.0,
+    "RAANS": 0.0,
+    "true_anomaly": 320.0
+  },
+  "target_orbit": {
+    "semimajor_axis": 26553.01,
+    "eccentricity": 0.72,
+    "inclination": 65.0,
+    "argument_of_perigee": 270.0,
+    "RAANS": 100.0,
+    "true_anomaly": 140.0
+  },
+  "initial_guess": {
+    "first_burn": [1.3304, 1.2181, 1.4416],
+    "second_burn": [1.4108, -0.9089, 2.7076]
+  },
+
+  "central_body": {
+    "earth": {
+      "gravitational_constant": 398600.4415,
+      "radius": 6378.14
+    }
+  }
+}
