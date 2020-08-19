@@ -43,9 +43,3 @@ dae = {'x':x, 'p':u, 'ode':xdot, 'quad':Ll}
 opts = {'tf':t_max/n_int}
 F = integrator('F', 'cvodes', dae, opts)
 
-
-# Evaluate at a test point
-Fk = F(x0=[0.2,0.3,0.4,0.5,0.6,0.7],p=[0.4,0.5,0.6])
-print(Fk['xf'])
-print(Fk['qf'])
-
