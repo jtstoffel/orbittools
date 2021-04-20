@@ -5,3 +5,5 @@ planets = {
         'gravitational_acceleration': 9.80665
     }
 }
+
+days_to_seconds = 86400
