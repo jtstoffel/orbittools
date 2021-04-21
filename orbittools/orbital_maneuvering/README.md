@@ -16,7 +16,7 @@
 
 42. Minimum Combined Plane Change (pg. 353)
 
-43. Fixed DeltaV Manuevers (pg. 356)
+43. Fixed DeltaV Maneuvers (pg. 356)
 
 44. Circular Coplanar Phasing (Same Orbits) (pg. 362)
 
