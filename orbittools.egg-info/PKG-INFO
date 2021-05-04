@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: orbittools
+Version: 0.1.0
+Summary: Tools for orbit and mission analysis
+Home-page: UNKNOWN
+Author: Josh Stoffel
+License: MIT
+Description: # orbittools
+        
+        This package contains python reimplementations of astrodynamics algorithms
+        from Vallado's Fundamentals of Astrodynamics. In addition, this package provides simulation environments for orbit manuevers and a web app for
+        designing orbits.
+        
+        ## Install
+        
+        ## Examples
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown

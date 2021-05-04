@@ -18,5 +18,5 @@ setup(name='orbittools',
           "Programming Language :: Python :: 3",
           "License :: OSI Approved :: MIT License"
       ],
-      install_requires=['numpy', 'casadi'],
+      install_requires=['numpy'],
       python_requires='>=3.8')

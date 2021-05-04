@@ -23,7 +23,7 @@ class Orbit2D:
             self.vel_a = vis_viva(self.radius_a, semimajor_axis, mu)
 
         if self.hyperbolic or self.parabolic:
-            # Add quatities of interest for these orbit types
+            # Add quantities of interest for these orbit types
             pass
 
     def determine_orbit_type(self):
@@ -104,6 +104,9 @@ class CoplanarCoaxialTransfer:
         deltaV2 = np.sqrt(vel_trans**2 + self.vel_f**2 -
                           (2 * vel_trans * np.cos(burn_angle)))
         deltaV_total = np.abs(deltaV1) + np.abs(deltaV2)
+        E = np.acos((eccentricity_trans + np.cos(vel_trans)) /
+                    (1 + (eccentricity_trans * np.cos(vel_trans))))
+        #duration = np.sqrt(semimajor_axis_trans**3 / self.mu) * ()
 
 
 class CoplanarPhasing:
