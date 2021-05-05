@@ -2,6 +2,8 @@ import numpy as np
 from numpy import pi
 import orbittools.constants as oc
 
+mu_earth = oc.planets['earth']['gravitational_constant']
+
 
 def kepler_eqn_elliptic(mean_anomaly, eccentricity):
     if -pi < mean_anomaly < 0 or mean_anomaly > pi:
@@ -18,7 +20,7 @@ def kepler_eqn_elliptic(mean_anomaly, eccentricity):
     return eccentric_anomaly
 
 
-def kepler_eqn_parabolic(duration, semilatus_rectum, mu=oc.planets['earth']['gravitational_constant']):
+def kepler_eqn_parabolic(duration, semilatus_rectum, mu=mu_earth):
     mean_angular_vel = 2 * np.sqrt(mu / (semilatus_rectum**3))
     s = 0.5 * np.arctan(1/(3 * mean_angular_vel * duration / 2))
     w = np.arctan((np.tan(s))**(1/3))
@@ -50,12 +52,12 @@ def kepler_eqn_hyperbolic(mean_anomaly, eccentricity):
 
 def true_to_anomaly(true_anomaly, eccentricity):
     if eccentricity < 1:
-        eccentric_anomaly = np.arccos(
-            (eccentricity + np.cos(true_anomaly)) / (1 + (eccentricity * np.cos(true_anomaly))))
+        eccentric_anomaly = np.arctan2((np.sin(true_anomaly) * np.sqrt(1 - eccentricity**2)) / (1 + eccentricity * np.cos(
+            true_anomaly)), (eccentricity + np.cos(true_anomaly)) / (1 + eccentricity * np.cos(true_anomaly)))
         return eccentric_anomaly
     if eccentricity > 1:
-        hyperbolic_anomaly = np.arccos(
-            (eccentricity + np.cos(true_anomaly)) / (1 + (eccentricity * np.cos(true_anomaly))))
+        hyperbolic_anomaly = np.arctanh(((np.sin(true_anomaly) * np.sqrt(eccentricity**2 - 1)) / (1 + eccentricity * np.cos(
+            true_anomaly))) / ((eccentricity + np.cos(true_anomaly)) / (1 + eccentricity * np.cos(true_anomaly))))
         return hyperbolic_anomaly
     else:
         parabolic_anomaly = np.tan(true_anomaly / 2)
@@ -64,17 +66,17 @@ def true_to_anomaly(true_anomaly, eccentricity):
 
 def anomaly_to_true(anomaly, eccentricity):
     if eccentricity < 1:
-        true_anomaly = np.arccos(
-            (-eccentricity + np.cos(anomaly)) / (1 - (eccentricity * np.cos(anomaly))))
+        true_anomaly = np.arctan2((np.sin(
+            anomaly) * np.sqrt(1 - eccentricity**2)) / (1 - eccentricity * np.cos(anomaly)), (np.cos(anomaly) - eccentricity) / (1 - eccentricity * np.cos(anomaly)))
         return true_anomaly
     if eccentricity > 1:
-        hyperbolic_anomaly = np.arccos(
-            (eccentricity + np.cos(true_anomaly)) / (1 - (eccentricity * np.cos(true_anomaly))))
+        hyperbolic_anomaly = np.arctan2((-np.sinh(anomaly) * np.sqrt(eccentricity**2 - 1)) / (
+            1 - eccentricity * np.cosh(anomaly)), (np.cosh(anomaly) - eccentricity) / (1 - eccentricity * np.cosh(anomaly)))
         return true_anomaly
     else:
-        print("parablic, use parabolic_anomaly_to_true() instead")
+        print("parablic eccentricity (e = 1), use parabolic_anomaly_to_true() instead")
         return None
 
 
-def parabolic_anomaly_to_true(semilatus_rectum, radius):
-    return np.arccos((semilatus_rectum - radius) / radius)
+def parabolic_anomaly_to_true(anomaly, semilatus_rectum, radius):
+    return np.arctan2(semilatus_rectum * anomaly / radius, (semilatus_rectum - radius) / radius)
