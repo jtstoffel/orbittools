@@ -1,6 +1,6 @@
 # Observations (Chapter 4, pages 241 - 276)
 
-### Algorithms
+### Algorithm
 
 25. Geocentric Radec (pg. 259)
 
