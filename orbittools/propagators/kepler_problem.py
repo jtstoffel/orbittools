@@ -1,6 +1,6 @@
 import numpy as np
 import orbittools.constants as oc
-from orbittools.kepler.kepler_eqn import *
+from orbittools.propagators.kepler_eqn import *
 
 mu_earth = oc.planets['earth']['gravitational_constant']
 
@@ -76,13 +76,6 @@ def radius_velocity_to_classical_elements(radius, velocity, mu=mu_earth):
         'circular_equatorial': ce}
 
 
-'''
-r = np.array([6524.834, 6862.875, 6448.296])
-v = np.array([4.901327, 5.533756, -1.976341])
-print(radius_velocity_to_elements(r, v))
-'''
-
-
 def rotx(theta):
     c = np.cos(theta)
     s = np.sin(theta)
@@ -145,29 +138,9 @@ def classical_elements_to_radius_velocity(elements, mu=mu_earth):
     return radius, velocity
 
 
-'''
-elements = {
-    'semilatus_rectum': 11067.79,
-    'semimajor_axis': None,
-    'eccentricity': 0.83285,
-    'inclination': 87.87,
-    'right_ascension': 227.89,
-    'true_anomaly': 92.335,
-    'arg_of_perigee': 53.38,
-    'true_lon_of_perigee': None,
-    'arg_of_latitude': None,
-    'true_longitude': None,
-    'noncircular_equatorial': False,
-    'circular_inclined': False,
-    'circular_equatorial': False}
-print(classical_elements_to_radius_velocity(elements))
-'''
-
-
 def kepler_orbit_propagate(radius, velocity, duration, mu=mu_earth):
     elements = radius_velocity_to_classical_elements(radius, velocity)
     elements_next = elements
-    print(elements)
     e = elements['eccentricity']
     a = elements['semimajor_axis']
     p = elements['semilatus_rectum']
@@ -206,14 +179,6 @@ def kepler_orbit_propagate(radius, velocity, duration, mu=mu_earth):
     radius_next, velocity_next = classical_elements_to_radius_velocity(
         elements_next)
     return radius_next, velocity_next
-
-
-'''
-r = np.array([1131.34, -2282.343, 6672.423])
-v = np.array([-5.64305, 4.30333, 2.42879])
-dt = 40 * 60
-print(kepler_orbit_propagate(r, v, dt))
-'''
 
 
 def find_time_of_flight(radius, radius_next, semilatus_rectum, mu=mu_earth):
