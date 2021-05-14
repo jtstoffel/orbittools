@@ -1,4 +1,4 @@
-# Orbit Propogators
+# Orbit Propogation
 
 # Kepler's Equation (Chapter 2, pages 41 - 128)
 

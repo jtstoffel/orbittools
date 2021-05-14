@@ -3,7 +3,7 @@ from orbittools.orbital_maneuvering.coplanar import vis_viva
 import orbittools.constants as oc
 
 radius_earth = oc.planets['earth']['radius']
-mu_earth = oc.planets['earth']['gravitational_constant']
+mu_earth = oc.planets['earth']['gravitational_parameter']
 
 
 class CircularOrbit3D:

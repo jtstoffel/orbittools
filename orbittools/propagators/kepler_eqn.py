@@ -2,7 +2,7 @@ import numpy as np
 from numpy import pi
 import orbittools.constants as oc
 
-mu_earth = oc.planets['earth']['gravitational_constant']
+mu_earth = oc.planets['earth']['gravitational_parameter']
 
 
 def kepler_eqn_elliptic(mean_anomaly, eccentricity):

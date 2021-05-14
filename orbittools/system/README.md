@@ -27,3 +27,21 @@
 23. IAU-2000, CIO-Based (pg. 219)
 
 24. IAU-76/FK5 Reduction (pg. 228)
+
+# Celestial Phenomena (Chapter 5, pages 277 - 316)
+
+### Algorithms
+
+29. Sun (pg. 279)
+
+30. SunriseSet (pg. 283)
+
+31. Moon (pg. 288)
+
+32. MoonriseSet (pg. 290)
+
+33. PlanetRV (pg. 296)
+
+34. Shadow (pg. 301)
+
+35. Sight (pg. 308)

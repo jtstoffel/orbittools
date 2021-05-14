@@ -2,7 +2,7 @@ import numpy as np
 import orbittools.constants as oc
 
 radius_earth = oc.planets['earth']['radius']
-mu_earth = oc.planets['earth']['gravitational_constant']
+mu_earth = oc.planets['earth']['gravitational_parameter']
 
 
 def vis_viva(radius, semimajor_axis, mu=mu_earth):
